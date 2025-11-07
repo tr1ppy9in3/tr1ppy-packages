@@ -45,7 +45,7 @@ jobs:
         run: dotnet pack --configuration Release --output "${{env.DOTNET_ROOT}}/NuGetPackages" --include-symbols --include-source --no-build --no-restore
         
       - name: Publish Main NuGet Package 
-        run: dotnet nuget push ${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
       - name: Publish Symbol Package 
-        run: dotnet nuget push ${{env.DOTNET_ROOT}}/NuGetPackages/*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate
+        run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.snupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate
