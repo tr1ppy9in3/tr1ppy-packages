@@ -42,7 +42,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack --configuration Release --output ${{env.DOTNET_ROOT}}/NuGetPackages --include-symbols --include-source --no-build --no-restore
+        run: dotnet pack --configuration Release --output "${{env.DOTNET_ROOT}}/NuGetPackages" --include-symbols --include-source --no-build --no-restore
         
       - name: Publish Main NuGet Package 
         run: dotnet nuget push ${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
