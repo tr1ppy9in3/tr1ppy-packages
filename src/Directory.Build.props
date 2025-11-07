@@ -1,0 +1,25 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        
+        <Title>$(AssemblyName)</Title>
+        <Authors>tr1ppy9in3</Authors>
+        <Company>tr1ppy9in3</Company>
+
+        <PackageProjectUrl>https://github.com/tr1ppy9in3/tr1ppy-packages</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/tr1ppy9in3/tr1ppy-packages</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
+</Project>
+
+  

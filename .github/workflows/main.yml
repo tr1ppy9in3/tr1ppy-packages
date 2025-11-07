@@ -25,12 +25,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4 
+        with:
+          fetch-depth: 0 
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
       - name: Install dependencies
         run: dotnet restore
@@ -38,8 +41,11 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Build the NuGet package
-        run: dotnet pack --configuration Release --output ${{env.DOTNET_ROOT}}\NuGetPackages
-
-      - name: Publish NuGet Package
-        run: dotnet nuget push ${{env.DOTNET_ROOT}}\NuGetPackages\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Pack
+        run: dotnet pack --configuration Release --output ${{env.DOTNET_ROOT}}/NuGetPackages --include-symbols --include-source --no-build --no-restore
+        
+      - name: Publish Main NuGet Package 
+        run: dotnet nuget push ${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+      - name: Publish Symbol Package 
+        run: dotnet nuget push ${{env.DOTNET_ROOT}}/NuGetPackages/*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate

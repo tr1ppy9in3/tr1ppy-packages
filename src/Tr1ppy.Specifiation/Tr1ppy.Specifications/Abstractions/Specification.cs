@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using System.Diagnostics.CodeAnalysis;
 using Tr1ppy.Specifications.Extensions;
 using Tr1ppy.Specifications.Implementations;
 
@@ -35,9 +34,9 @@ public abstract record Specification<T> : ISpecification<T>
     /// <summary>
     /// Instance of compiled expression as func.
     /// </summary>
-    [field: AllowNull, MaybeNull]
-    private Func<T, bool> FuncInstance => field ??= Expression.Compile();
-
+    private Func<T, bool> FuncInstance => _funcInstance ??= Expression.Compile();
+    private Func<T, bool>? _funcInstance;
+    
     /// <summary>
     /// Creates an <see cref="ISpecification{T}"/> instance by wrapping a raw <see cref="Expression{TDelegate}"/>.
     /// </summary>

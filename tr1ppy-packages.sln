@@ -6,13 +6,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tr1ppy.Specifications", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{530C689B-FBB3-408E-850A-9E9BD909DC5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tr1ppy.Specifications.UnitTests", "test\Tr1ppy.Specifications.UnitTests\Tr1ppy.Specifications.UnitTests.csproj", "{C79F086B-3858-4431-A128-98B388C5942C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tr1ppy.Specifications.Tests.Unit", "test\Tr1ppy.Specifications.Tests.Unit\Tr1ppy.Specifications.Tests.Unit.csproj", "{C79F086B-3858-4431-A128-98B388C5942C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specifications", "Specifications", "{3984A65B-3BBD-4919-99DA-2E59EADCFB7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specifications", "Specifications", "{1AE96B65-6987-45B5-916B-9CFFF0E39D4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tr1ppy.Specifications.Tests.Core", "test\Tr1ppy.Specifications.Tests.Core\Tr1ppy.Specifications.Tests.Core.csproj", "{E636551E-46B2-412D-8F96-0840A4788589}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{81DA1FEA-8426-4915-B1E6-C067ACD3B68F}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
