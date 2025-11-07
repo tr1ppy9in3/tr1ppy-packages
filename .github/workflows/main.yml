@@ -46,6 +46,8 @@ jobs:
         
       - name: Publish Main NuGet Package 
         run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        shell: bash
         
       - name: Publish Symbol Package 
         run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.snupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate
+        shell: bash
