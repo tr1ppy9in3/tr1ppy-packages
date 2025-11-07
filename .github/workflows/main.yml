@@ -45,9 +45,17 @@ jobs:
         run: dotnet pack --configuration Release --output "${{env.DOTNET_ROOT}}/NuGetPackages" --include-symbols --include-source --no-build --no-restore
         
       - name: Publish Main NuGet Package 
-        run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        shell: bash
+        run: |
+          $nupkgPath = Join-Path "${{env.DOTNET_ROOT}}" "NuGetPackages/*.nupkg"
+          Get-ChildItem -Path $nupkgPath | ForEach-Object {
+            dotnet nuget push $_.FullName --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
+        shell: pwsh 
         
       - name: Publish Symbol Package 
-        run: dotnet nuget push "${{env.DOTNET_ROOT}}/NuGetPackages/*.snupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate
-        shell: bash
+        run: |
+          $snupkgPath = Join-Path "${{env.DOTNET_ROOT}}" "NuGetPackages/*.snupkg"
+          Get-ChildItem -Path $snupkgPath | ForEach-Object {
+            dotnet nuget push $_.FullName --api-key ${{ secrets.NUGET_API_KEY }} --source https://symbols.nuget.org/ --skip-duplicate
+          }
+        shell: pwsh
